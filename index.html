@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Usman AI Text</title>
+  <link rel="stylesheet" href="output.css">
+</head>
+<body class="min-h-screen font-poppins scroll-smooth text-white">
+ <!-- ================================= Home ======================================== -->
+ <section id="home" class="min-h-screen bg-primary-1">
+  <!-- nav-bar -->
+  <nav class="flex flex-wrap justify-between bg-primary-1 text-white h-full px-[3rem] text-base pt-[1rem] z-40">
+    <div id="logo-container" class="flex text-primary-2 items-center">
+        <img src="" alt="" class="src"> Usman
+    </div>
+
+    <!-- Main navigation -->
+    <div id="nav-links" class="md:flex gap-7 h-full hidden">
+        <a href="#home" class="hover:text-primary-2 flex items-center text-sm">AI Text</a>
+        <a href="#about-us" class="hover:text-primary-2 flex items-center text-sm">About us</a>
+        <a href="#" class="hover:text-primary-2 flex items-center text-sm">Pricing</a>
+        <a href="#" class="hover:text-primary-2 flex items-center text-sm">EN</a>
+
+        <div class="flex gap-[10px]">
+            <button class="font-medium bg-primary-2 text-primary-1 border-1 rounded cursor-pointer px-6 py-[5px] hover:bg-primary-1 hover:text-primary-2">
+                Sign up
+            </button>
+            <button class="font-medium border px-6 py-[5px] rounded text-primary-2 cursor-pointer hover:bg-primary-2 hover:text-primary-1">
+                Log in
+            </button>
+        </div>
+    </div>
+
+    <!-- Hamburger button -->
+    <button class="md:hidden" onclick="sideBar()">
+        <i class="fa-solid fa-bars flex text-primary-2"></i>
+    </button>
+</nav>
+
+<!-- Sidebar -->
+<div id="side-bar" class="min-h-dvh min-w-dvw bg-primary-1 flex-col z-50 justify-between fixed top-0 hidden text-center items-center gap-2 py-10">
+  <button class="md:hidden" onclick="sideBar()">
+      <i class="fa-solid fa-square-xmark text-primary-2 text-2xl"></i>
+  </button>
+  
+  <a href="#home" class="hover:text-white text-primary-2 text-lg font-semibold py-5 w-full text-center">AI Text</a>
+  <a href="#about-us" class="hover:text-white text-primary-2 text-lg font-semibold py-5 w-full text-center">About us</a>
+  <a href="#" class="hover:text-white text-primary-2 text-lg font-semibold py-5 w-full text-center">Pricing</a>
+  <a href="#" class="hover:text-white text-primary-2 text-lg font-semibold py-5 w-full text-center">EN</a>
+</div>
+
+
+  <!-- Main Heading  -->
+  <p class="text-center pt-[2.5rem] text-sm">Creative work, creative mind</p>
+  <h1 class="text-center text-[40px] text-primary-2 font-medium">Usman AI Chat Project</h1>
+
+  <!-- Modes Toggle -->
+  <div class="container mx-auto p-2 flex justify-center items-center gap-4">
+      <div class="bg-white w-full max-w-5xl p-2 rounded-lg shadow-lg">
+
+          <!-- Language & Mode Selection -->
+          <div class="flex justify-between items-center border-b pb-2 border-gray-400">
+              <div class="flex items-center gap-6 flex-wrap">
+                  <select class="p-1 border rounded-md text-black">
+                      <option>English</option>
+                      <option>Urdu</option>
+                      <option>French</option>
+                      <option>Portuguese</option>
+                  </select>
+                  <select class="p-1 border rounded-md text-black md:hidden">
+                    <option>Fluent</option>
+                    <option>Academic</option>
+                    <option>Professional-formal</option>
+                    <option>Professional-friendly</option>
+                    <option>Creative</option>
+                </select>
+                  <div class="md:flex md:gap-6 text-gray-600 hidden">
+                      <button class="hover:text-black">Fluent</button>
+                      <button class="hover:text-black">Academic</button>
+                      <button class="hover:text-black">Professional-formal</button>
+                      <button class="hover:text-black">Professional-friendly</button>
+                      <button class="hover:text-black">Creative</button>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Text Areas -->
+          <div class="flex justify-center gap-4 text-black h-48 relative">
+              <!-- Left Textbox  -->
+              <div class="w-1/2 h-full relative">
+                  <textarea id="inputBox" class="w-full h-full p-5 resize-none focus:outline-none text-sm" placeholder="Type text here..."></textarea>
+
+                  <!-- Paste Button -->
+                  <button id="pasteBtn" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-200 text-black px-4 py-2 rounded-md shadow-lg cursor-pointer hidden">
+                    📋 Paste
+                  </button>
+
+                  <!-- Word Count -->
+                  <span id="wordCount" class="absolute bottom-1 right-6 text-gray-500 text-xs">Words: 0</span>
+              </div>
+
+              <!-- Right Textbox -->
+              <div class="w-1/2 h-full">
+                  <textarea id="outputBox" class="w-full h-full p-5 resize-none focus:outline-none border-l border-gray-400 text-sm" readonly></textarea>
+              </div>
+          </div>
+
+          <!-- Buttons Container  -->
+          <div class="flex flex-col justify-between border-t border-gray-400 pt-2 relative">
+              <!-- Left Buttons -->
+              <div class="flex gap-4 flex-col md:flex-row">
+                  <button id="humanizeBtn" class="px-6 py-1 bg-primary-1 text-white rounded-md cursor-pointer hover:text-primary-2">Send</button>
+                  
+                  <button id="clearBtn" class="px-6 py-1 text-black cursor-pointer">
+                      <i class="fa-solid fa-eraser text-black p-2"></i>Clear Text
+                  </button>
+              </div>
+              
+              <!-- Upload Button -->
+              <button id="uploadBtn" class="px-6 py-2 text-black md:absolute right-35 cursor-pointer">📤 Upload</button>
+          </div>
+      </div>
+  </div>
+
+  <div class="flex justify-center items-center p-2 m-2">
+  <button id="upgradeBtn" class="flex self-center border border-primary-2 bg-primary-2 p-2 rounded-3xl text-black cursor-pointer hover:bg-primary-1 hover:text-primary-2"></i>✨ Enhanced Mode</button>
+</div>
+
+<div class="flex justify-between items-center bg-primary-2 text-primary-1 px-[8rem] mt-6 pb-4 flex-wrap">
+  <span class="text-4xl pt-4 font-bold">Revies</span>
+  <span class="text-3xl pt-4 font-medium">  <p class="text-sm">4.9 Classifications</p> ★★★★★</span>
+  <span class="text-3xl pt-4 font-medium flex"><i class="fa-solid fa-user md:pt-4 pr-2 text-[40px]"></i><span><p class="text-sm">Total number of users</p>200k+</span></span>
+  <span class="text-3xl pt-4 font-medium flex"><i class="fa-solid fa-user md:pt-4 pr-2 text-[40px]"></i><span><p class="text-sm">Synonms</p>1.5 Millions</span></span>
+  <span class="text-3xl pt-4 font-medium flex"><i class="fa-solid fa-user md:pt-4 pr-2 text-[40px]"></i><span><p class="text-sm">Modes</p>695</span></span>
+</div>
+</section>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
